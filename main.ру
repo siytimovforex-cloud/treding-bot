@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Render'da "Environment Variables" qismiga qo'shasiz
 API_TOKEN = os.environ.get('8849499948:AAHtZ-qZSfdIGiLvsrtft50RTr6WVSCHdrY')
-CHAT_ID = os.environ.get('1811630539')
+CHAT_ID = os.environ.get('8849499948')
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
