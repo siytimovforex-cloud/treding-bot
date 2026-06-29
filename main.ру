@@ -22,5 +22,5 @@ def webhook():
         return "Muvaffaqiyat", 200
     return "Noto'g'ri", 400
 
-if name == '__main__':
+if__name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
