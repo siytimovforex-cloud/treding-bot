@@ -4,24 +4,23 @@ import requests
 
 app = Flask(__name__)
 
-# Render'da "Environment Variables" qismiga qo'shasiz
-API_TOKEN = os.environ.get('8849499948:AAHtZ-qZSfdIGiLvsrtft50RTr6WVSCHdrY')
-CHAT_ID = os.environ.get('8849499948')
+# Render'dagi "Environment Variables" nomlarini chaqiramiz
+API_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+CHAT_ID = os.environ.get("CHAT_ID")
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    data = request.get_json(force=True)
+    data = request.get_json()
     if data:
         symbol = data.get('symbol', 'Noma\'lum')
         price = data.get('price', 'N/A')
-        message = f"Trading signal:\nSymbol: {symbol}\nPrice: {price}"
+        message = f"Savdo signali:\nBelgi: {symbol}\nNarxi: {price}"
         
         # Telegramga yuborish
         url = f"https://api.telegram.org/bot{API_TOKEN}/sendMessage"
         requests.post(url, json={"chat_id": CHAT_ID, "text": message})
-        return 'Success', 200
-    return 'Invalid', 400
+        return "Muvaffaqiyat", 200
+    return "Noto'g'ri", 400
 
-if __name__ == '__main__':
-    # Render avtomatik port tayinlaydi
+if name == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
