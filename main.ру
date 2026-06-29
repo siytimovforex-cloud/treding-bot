@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-# Render'dagi "Environment Variables" nomlarini chaqiramiz
+# Render'dagi "Environment Variables" dan tokenlarni olamiz
 API_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 
@@ -22,5 +22,5 @@ def webhook():
         return "Muvaffaqiyat", 200
     return "Noto'g'ri", 400
 
-if__name__ == '__main__':
+if name == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
